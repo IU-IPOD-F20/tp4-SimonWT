@@ -4,8 +4,9 @@ import bank.Account;
 
 import java.util.Locale;
 import java.util.Scanner;
+import java.io.PrintStream;
 
-public class ActionSeeAccountNumber implements Action<BankAgency>  {
+public class ActionSeeAccountNumber<E> implements Action<E>  {
 
     private String code;
     private String message;
@@ -23,15 +24,17 @@ public class ActionSeeAccountNumber implements Action<BankAgency>  {
         return code;
     };
 
-	public void execute(BankAgency ag) throws Exception {
+	public void execute(E e) throws Exception {
         Scanner lect ;
+        PrintStream sout;
         String number;
 		Account c;
-        lect = new Scanner( System.in );
-		lect.useLocale(Locale.US);
-        System.out.print("Account Number -> ");
+        lect = e.getScanner();
+        sout = e.getPrintStream();
+        sout.print("Account Number -> ");
+        // System.out.print("Account Number -> ");
         number = lect.next();
-        c = ag.getAccount(number);
+        c = e.getBankAgency().getAccount(number);
         if (c==null) {
             System.out.println("Account non existing ...");
         } else {

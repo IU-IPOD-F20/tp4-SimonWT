@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.LinkedList;
+import java.io.PrintStream;
 
 public class SomeActionList<E> implements ActionList<E> {
     private String code;
@@ -81,27 +82,24 @@ public class SomeActionList<E> implements ActionList<E> {
         return this.code;
     };
 
-    public static void tempo() {
-		Scanner lect ;
-		lect = new Scanner (System.in );
-
-		System.out.print("Type any car + return to continue ... ");
+    public static void tempo(Scanner lect, PrintStream sout) {
+		
+		sout.print("Type any car + return to continue ... ");
         lect.next(); 
 	};
 
     @Override
     public void execute(E e) throws Exception{
-        Scanner lect ;
+        Scanner lect = e.getScanner();
+        PrintStream sout = e.getPrintStream();
         String choice ;
-        lect = new Scanner( System.in );
-        lect.useLocale(Locale.US);
         while(true){
-            System.out.print("\n" + "Menu of " + listTitle()+"\n");
+            sout.print("\n" + "Menu of " + listTitle()+"\n");
             for(Action<E> action: actionlist){
-                System.out.print(action.actionCode() + " - " + action.actionMessage() + "\n");
+                sout.print(action.actionCode() + " - " + action.actionMessage() + "\n");
             }
-            System.out.print("q - Quit\n");
-            System.out.print("Choice -> ");
+            sout.print("q - Quit\n");
+            sout.print("Choice -> ");
             choice = lect.next();
             choice = choice.toLowerCase();
             if(choice.charAt(0) == 'q'){
@@ -110,7 +108,7 @@ public class SomeActionList<E> implements ActionList<E> {
                for (int i = 0; i < size(); i++) {
                    if(actionlist.get(i).actionCode().equals(choice)){
                         actionlist.get(i).execute(e);
-                        tempo();
+                        tempo(lect, sout);
                    }
                }
             }

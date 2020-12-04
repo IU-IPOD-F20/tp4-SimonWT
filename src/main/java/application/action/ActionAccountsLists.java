@@ -1,7 +1,7 @@
 package application.action;
 import bank.BankAgency;
 
-public class ActionAccountsLists implements Action<BankAgency>  {
+public class ActionAccountsLists<E> implements Action<E>  {
 
     private String code;
     private String message;
@@ -19,7 +19,7 @@ public class ActionAccountsLists implements Action<BankAgency>  {
         return code;
     };
 
-	public void execute(BankAgency ag) throws Exception {
-        ag.print();
+	public void execute(E ag) throws Exception {
+        ag.getBankAgency().print();
     };
 }

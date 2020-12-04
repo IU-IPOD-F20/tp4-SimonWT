@@ -13,16 +13,17 @@ import bank.BankAgency;
 import bank.Account;
 import bank.exception.AccountException;
 import application.AccesBankAgency;
+import application.ApplicationContextBankAgency;
 
 public class BankAgencyApp {
 
 	public static void main(String argv[]) {
-		BankAgency myAgency = AccesBankAgency.getBankAgency();
+		ApplicationContextBankAgency myAgency = ApplicationContextBankAgency.getInstance();
 
-		ActionList<BankAgency> mainMenu = new SomeActionList<BankAgency>("1", "Menu of Tinkoff Bank (Kazan)", "Menu of Tinkoff Bank (Kazan)");
+		ActionList<ApplicationContextBankAgency> mainMenu = new SomeActionList<ApplicationContextBankAgency>("1", "Menu of Tinkoff Bank (Kazan)", "Menu of Tinkoff Bank (Kazan)");
 
-		Action<BankAgency> accountsList = new ActionAccountsLists("a", "List of all available accounts");
-		Action<BankAgency> getAccountsByNumber = new ActionSeeAccountNumber("b", "Get account by a number");
+		Action<ApplicationContextBankAgency> accountsList = new ActionAccountsLists("a", "List of all available accounts");
+		Action<ApplicationContextBankAgency> getAccountsByNumber = new ActionSeeAccountNumber("b", "Get account by a number");
 
 		mainMenu.addAction(accountsList, 0);
 		mainMenu.addAction(getAccountsByNumber, 1);
