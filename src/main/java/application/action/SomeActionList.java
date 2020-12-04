@@ -1,5 +1,5 @@
 
-package application.actionlist;
+package application.action;
 import application.action.ActionList;
 import application.action.Action;
 
@@ -8,15 +8,13 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.LinkedList;
 
-import bank.BankAgency;
-
-public class GenericActionList<E> implements ActionList<E> {
+public class SomeActionList<E> implements ActionList<E> {
     private String code;
     private String message;
     private String title;
     private List<Action<E>> actionlist;
 
-    public GenericActionList(String code, String message, String title){
+    public SomeActionList(String code, String message, String title){
         this.code = code;
         this.message = message;
         this.title = title;
