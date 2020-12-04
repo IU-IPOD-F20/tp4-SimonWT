@@ -5,7 +5,7 @@ import bank.Account;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class ActionSeeAccountNumber implements Action  {
+public class ActionSeeAccountNumber implements Action<BankAgency>  {
 
     private String code;
     private String message;
@@ -25,7 +25,7 @@ public class ActionSeeAccountNumber implements Action  {
 
 	public void execute(BankAgency ag) throws Exception {
         Scanner lect ;
-        String name, number;
+        String number;
 		Account c;
         lect = new Scanner( System.in );
 		lect.useLocale(Locale.US);

@@ -1,7 +1,7 @@
 package application.action;
 import bank.BankAgency;
 
-public class ActionAccountsLists implements Action  {
+public class ActionAccountsLists implements Action<BankAgency>  {
 
     private String code;
     private String message;

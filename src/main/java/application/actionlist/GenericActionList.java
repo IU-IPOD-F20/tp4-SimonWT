@@ -10,17 +10,17 @@ import java.util.LinkedList;
 
 import bank.BankAgency;
 
-public class GenericActionList implements ActionList {
+public class GenericActionList implements ActionList<BankAgency> {
     private String code;
     private String message;
     private String title;
-    private List<Action> actionlist;
+    private List<Action<BankAgency>> actionlist;
 
     public GenericActionList(String code, String message, String title){
         this.code = code;
         this.message = message;
         this.title = title;
-        this.actionlist = new LinkedList<Action>();
+        this.actionlist = new LinkedList<Action<BankAgency>>();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class GenericActionList implements ActionList {
     };
 
     @Override
-	public boolean addAction(Action ac){
+	public boolean addAction(Action<BankAgency> ac){
         return this.actionlist.add(ac);
     };
 
@@ -54,7 +54,7 @@ public class GenericActionList implements ActionList {
 		lect = new Scanner (System.in );
 
 		System.out.print("Type any car + return to continue ... ");
-		lect.next(); 
+        lect.next(); 
 	};
 
     @Override
@@ -65,7 +65,7 @@ public class GenericActionList implements ActionList {
         lect.useLocale(Locale.US);
         while(true){
             System.out.print("\n" + "Menu of " + listTitle()+"\n");
-            for(Action action: actionlist){
+            for(Action<BankAgency> action: actionlist){
                 System.out.print(action.actionCode() + " - " + action.actionMessage() + "\n");
             }
             System.out.print("q - Quit\n");

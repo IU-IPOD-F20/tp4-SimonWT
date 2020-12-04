@@ -2,9 +2,12 @@ package application.action;
 import bank.BankAgency;
 /**
  * An Action is an object that implements some action of a user's menu.<BR>
- * It is defined by a message, an optional code, an execute method to "do" the action.
+ * It is defined by a message, an optional code, an execute method to "do" the action.<BR>
+ * It is parameterized by the  type of object on which the action may act on (execute on).
+ *
+ * @param <E> The type of object on which the action may act on.
  */
-public interface Action  {
+public interface Action <E>{
 	/**
 	 * Message of the action (to show on screen).
 	 *
@@ -20,10 +23,10 @@ public interface Action  {
 	public String actionCode ();
 
 	/**
-	 * The method to call in order to "execute" the action on <code>ag</code>.
+	 * The method to call in order to "execute" the action on <code>e</code>.
 	 *
-	 * @param ag the BankAgency on which the action may act on
+	 * @param e the object on which the action may act on
 	 * @throws Exception when an uncaught exception occurs during execution
-	*/
-	public void execute(BankAgency ag) throws Exception;
+	 */
+	public void execute(E e) throws Exception;
 }
