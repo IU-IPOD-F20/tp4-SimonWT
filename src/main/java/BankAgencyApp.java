@@ -19,13 +19,13 @@ public class BankAgencyApp {
 	public static void main(String argv[]) {
 		BankAgency myAgency = AccesBankAgency.getBankAgency();
 
-		ActionList<BankAgency> mainMenu = new GenericActionList("1", "Menu of Tinkoff Bank (Kazan)", "Menu of Tinkoff Bank (Kazan)");
+		ActionList<BankAgency> mainMenu = new GenericActionList<BankAgency>("1", "Menu of Tinkoff Bank (Kazan)", "Menu of Tinkoff Bank (Kazan)");
 
 		Action<BankAgency> accountsList = new ActionAccountsLists("a", "List of all available accounts");
 		Action<BankAgency> getAccountsByNumber = new ActionSeeAccountNumber("b", "Get account by a number");
 
-		mainMenu.addAction(accountsList);
-		mainMenu.addAction(getAccountsByNumber);
+		mainMenu.addAction(accountsList, 0);
+		mainMenu.addAction(getAccountsByNumber, 1);
 
 		try {
             mainMenu.execute(myAgency);

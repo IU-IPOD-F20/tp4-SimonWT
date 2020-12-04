@@ -30,10 +30,36 @@ public interface ActionList<E> extends Action<E>{
 	public int size();
 
 	/**
-	 * Add an action at the end of the list action if it does not yet exists.
+	 * Add an action in the list action at the specified index if it does not yet exists.
 	 *
 	 * @param ac the action to add
+	 * @param index index to add the action
 	 * @return true if action is added, else false
+	 * @throws IndexOutOfBoundsException if (index < 0) || (index > size())
 	 */
-	public boolean addAction(Action<E> ac);
+	public boolean addAction(Action<E> ac, int index);
+
+	/**
+	 * Remove an action from the list action at the specified index.
+	 *
+	 * @param index index to remove the action
+	 * @return true
+	 * @throws IndexOutOfBoundsException if (index < 0) || (index > size())
+	 */
+	public boolean removeAction(int index);
+
+	/**
+	 * Remove an action from the list action.
+	 *
+	 * @param ac the action to remove
+	 * @return true if action is removed (found), else false
+	 */
+	public boolean removeAction(Action<E> ac);
+
+	/**
+	 * List of the messages of actions contained in the action list
+	 *
+	 * @return an array of messages of the list action
+	 */
+	public String[] listOfActions() ;
 }
