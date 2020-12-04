@@ -1,7 +1,8 @@
 package application.action;
 import bank.BankAgency;
+import application.ApplicationContextBankAgency;
 
-public class ActionAccountsLists<E> implements Action<E>  {
+public class ActionAccountsLists implements Action<ApplicationContextBankAgency>  {
 
     private String code;
     private String message;
@@ -19,7 +20,7 @@ public class ActionAccountsLists<E> implements Action<E>  {
         return code;
     };
 
-	public void execute(E ag) throws Exception {
+	public void execute(ApplicationContextBankAgency ag) throws Exception {
         ag.getBankAgency().print();
     };
 }

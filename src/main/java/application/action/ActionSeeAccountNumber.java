@@ -6,7 +6,9 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.io.PrintStream;
 
-public class ActionSeeAccountNumber<E> implements Action<E>  {
+import application.ApplicationContextBankAgency;
+
+public class ActionSeeAccountNumber implements Action<ApplicationContextBankAgency>  {
 
     private String code;
     private String message;
@@ -24,7 +26,7 @@ public class ActionSeeAccountNumber<E> implements Action<E>  {
         return code;
     };
 
-	public void execute(E e) throws Exception {
+	public void execute(ApplicationContextBankAgency e) throws Exception {
         Scanner lect ;
         PrintStream sout;
         String number;

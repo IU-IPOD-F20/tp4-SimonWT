@@ -9,17 +9,19 @@ import java.util.Scanner;
 import java.util.LinkedList;
 import java.io.PrintStream;
 
-public class SomeActionList<E> implements ActionList<E> {
+import application.ApplicationContextBankAgency;
+
+public class SomeActionList implements ActionList<ApplicationContextBankAgency> {
     private String code;
     private String message;
     private String title;
-    private List<Action<E>> actionlist;
+    private List<Action<ApplicationContextBankAgency>> actionlist;
 
     public SomeActionList(String code, String message, String title){
         this.code = code;
         this.message = message;
         this.title = title;
-        this.actionlist = new LinkedList<Action<E>>();
+        this.actionlist = new LinkedList<Action<ApplicationContextBankAgency>>();
     }
 
     @Override
@@ -33,9 +35,9 @@ public class SomeActionList<E> implements ActionList<E> {
     };
 
     @Override
-	public boolean addAction(Action<E> ac, int index) throws IndexOutOfBoundsException{
+	public boolean addAction(Action<ApplicationContextBankAgency> ac, int index) throws IndexOutOfBoundsException{
         try{
-            Action<E> current = this.actionlist.get(index);
+            Action<ApplicationContextBankAgency> current = this.actionlist.get(index);
             return false;
         }catch (Exception e){
             this.actionlist.add(index, ac);
@@ -54,7 +56,7 @@ public class SomeActionList<E> implements ActionList<E> {
     };
 
 	@Override
-	public boolean removeAction(Action<E> ac){
+	public boolean removeAction(Action<ApplicationContextBankAgency> ac){
         try{
             this.actionlist.remove(ac);
             return true;
@@ -89,13 +91,13 @@ public class SomeActionList<E> implements ActionList<E> {
 	};
 
     @Override
-    public void execute(E e) throws Exception{
+    public void execute(ApplicationContextBankAgency e) throws Exception{
         Scanner lect = e.getScanner();
         PrintStream sout = e.getPrintStream();
         String choice ;
         while(true){
             sout.print("\n" + "Menu of " + listTitle()+"\n");
-            for(Action<E> action: actionlist){
+            for(Action<ApplicationContextBankAgency> action: actionlist){
                 sout.print(action.actionCode() + " - " + action.actionMessage() + "\n");
             }
             sout.print("q - Quit\n");
